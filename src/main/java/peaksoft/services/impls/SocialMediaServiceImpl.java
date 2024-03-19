@@ -63,7 +63,7 @@ public class SocialMediaServiceImpl implements SocialMediaService {
     @Override
     public SimpleResponse delete(Long socialMediaId) {
         socialMediaRepository.findById(socialMediaId).orElseThrow(() -> new NotFoundException("Social media with id " + socialMediaId + " not found!"));
-        userRepository.deleteById(socialMediaId);
+        socialMediaRepository.deleteById(socialMediaId);
         return SimpleResponse.builder().httpStatus(HttpStatus.OK).message("Successfully deleted!").build();
     }
 }
