@@ -20,13 +20,13 @@ public class UserAPI {
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @Operation(description = "Get by id")
     @GetMapping("/{userId}")
-    UserResponse findUserById(@PathVariable Long userId) {
+    public UserResponse findUserById(@PathVariable Long userId) {
         return userService.findById(userId);
     }
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @Operation(description = "Get all users")
     @GetMapping("/users")
-    UserPaginationResponse getAllUsers(@RequestParam int page, @RequestParam int size) {
+    public UserPaginationResponse getAllUsers(@RequestParam int page, @RequestParam int size) {
         return userService.getAllUsers(page, size);
     }
 
@@ -39,7 +39,7 @@ public class UserAPI {
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @Operation(description = "Delete user")
     @DeleteMapping("/{userId}")
-    SimpleResponse delete(@PathVariable Long userId) {
+    public SimpleResponse delete(@PathVariable Long userId) {
         return userService.delete(userId);
     }
 
